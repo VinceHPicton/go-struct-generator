@@ -5,7 +5,7 @@
         {
           "name": "ID",
           "type": "int",
-          "tag": "`json:\"id\"`"
+          "tag": "`json:\"id,omitempty\"`"
         },
         {
           "name": "Country",
