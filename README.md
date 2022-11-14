@@ -15,7 +15,7 @@ go run main.go -file your_file.json
 - If you desire a struct tag use the "tag" attribute aswell, it is not required.
 
 
-# If your field is itself a struct or an array of structs:
+### If your field is itself a struct or an array of structs:
 - You must set the "type" as "struct" or "[]struct" for this to be recognised by the program
 - Use another "field" array attribute, and populate it just the same way as the "fields" described above
 - If this substruct itself has more structs as fields, simply repeat these steps for those, the program will define structs as many levels deep as required.
