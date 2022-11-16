@@ -53,7 +53,7 @@ func main() {
 }
 
 func writeGoStructsToOutFile(structDefinitions []string) {
-	file, err := os.Create("out.go")
+	file, err := os.Create("out.txt")
 	if err != nil {
 		log.Fatal("Failed to create out file")
 	}
