@@ -2,9 +2,10 @@ package buildstructs
 
 import (
 	"fmt"
-	"strings"
 )
 
+// StructField is used to represent both a field of a struct, or a full struct definition (if the DataType is struct or []struct)
+// In which case the SubFields attribute is populated with the StructFields of that struct
 type StructField struct {
 	Name      string        `json:"name"`
 	DataType  string        `json:"type"`
@@ -12,9 +13,6 @@ type StructField struct {
 	SubFields []StructField `json:"fields"`
 }
 
-// if you are trying to mutate f you use a pointer
-// if you are just trying to read you just use value
-// if f itself is already a pointer value, then you might use a pointer receiver because...thiscould cause a problem otherwise - you would find out with unit tests
 func (f StructField) IsStruct() bool {
 	if f.DataType == "struct" {
 		return true
@@ -31,7 +29,8 @@ func (f StructField) IsStructSlice() bool {
 	}
 }
 
-func (f *StructField) GenerateStructField() string {
+// GenerateStructField returns the string for a StructField which represents that field within a Go struct definition
+func (f StructField) GenerateStructField() string {
 
 	dataTypeForFieldOfStructDef := f.DataType
 
@@ -43,44 +42,4 @@ func (f *StructField) GenerateStructField() string {
 	}
 
 	return fmt.Sprintf("\t%v\t%v\t%v\n", f.Name, dataTypeForFieldOfStructDef, f.Tag)
-}
-
-func CreateStructsForFieldSlice(fields []StructField) []string {
-	var structDefs []string
-
-	generateStructsRecursion(fields, &structDefs)
-
-	return structDefs
-}
-
-func generateStructsRecursion(fields []StructField, structDefinitions *[]string) {
-
-	for _, f := range fields {
-		if f.IsStruct() || f.IsStructSlice() {
-
-			// in any order:
-			// make a struct definition for the current struct (f) and add it to the list to be printed to stdout later
-			newStructDefinition := createStructDefinition(f)
-			*structDefinitions = append(*structDefinitions, newStructDefinition)
-
-			// pass it's subfields to this func - this func will kick off creating definitions for any further substructs
-			generateStructsRecursion(f.SubFields, structDefinitions)
-		}
-	}
-
-}
-
-func createStructDefinition(f StructField) string {
-
-	var sb strings.Builder
-
-	sb.Write([]byte(fmt.Sprintf("type %v struct {\n", f.Name)))
-
-	for _, fieldValueForString := range f.SubFields {
-		sb.Write([]byte(fieldValueForString.GenerateStructField()))
-	}
-
-	sb.Write([]byte("}\n\n"))
-
-	return sb.String()
 }
