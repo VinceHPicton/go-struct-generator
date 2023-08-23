@@ -8,6 +8,8 @@ Pull the repo and simply run:
 go run main.go -file your_file.json
 ```
 
+This will generate a file named out.txt which will contain the generated Go structs for you to paste into your app.
+
 ### How to structure your json file
 - See the example_structs.json for these points in action
 - The file is an array of objects, each of these objects represent a struct you desire to create. They should each have "name" and "fields" attributes
