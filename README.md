@@ -5,7 +5,7 @@ Reads a JSON file and generates go struct definitions for you recursively - stru
 Pull the repo and simply run:
 
 ```bash
-go run main.go -file your_file.json
+go run main.go -file relative/path/to/your/file.json
 ```
 
 This will generate a file named out.txt which will contain the generated Go structs for you to paste into your app.
