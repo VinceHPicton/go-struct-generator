@@ -22,7 +22,7 @@ This will generate a file named out.txt which will contain the generated Go stru
 - "name" is the name of that field in the go struct
 - "type" is the type of that field
 - "tag" (optional), is the struct tag eg `json:"fieldName"`
-- Except where "type" is "struct" or "[]struct", the "name" "tag" and "type" attributes are blindly pasted as given into the line of the generated struct definition
+- Except where "type" is "struct" or "[]struct", the "name" "tag" and "type" attributes are blindly pasted as given into the line of the generated struct definition - therefore you must include the backticks in the "tag" attribute value.
 - Where "type" is "struct", the go struct field's type will be pasted in from the "name" field in the json object.
 - Where "type" is "[]struct", the go struct field's type will be "[]json_name" where json_name is the value of the "name" field in the json object
 - "fields" (optional) is another array of objects, in identical format as the top level array, used where a struct field is itself a new struct (or []struct), see details below.
