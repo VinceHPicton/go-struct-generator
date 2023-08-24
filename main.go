@@ -16,9 +16,15 @@ func main() {
 
 	var file string
 
-	flag.StringVar(&file, "file", "", "Name of the input json file for the program to consume")
+	flag.StringVar(&file, "file", "", "Relative path to the input json file for the program to use - eg path/to/example.json")
+	showHelp := flag.Bool("help", false, "Show usage help")
 
 	flag.Parse()
+
+	if *showHelp || file == "" {
+		printHelp()
+		return
+	}
 
 	jsonBytes := readFile(file)
 
@@ -52,10 +58,19 @@ func main() {
 
 }
 
+func printHelp() {
+	fmt.Println("Go-struct-generator is a tool which generates go structs from json files.")
+	fmt.Println()
+	fmt.Println("Usage: go-struct-generator [options]")
+	fmt.Println("Options:")
+	flag.PrintDefaults()
+	os.Exit(0)
+}
+
 func writeGoStructsToOutFile(structDefinitions []string) {
 	file, err := os.Create("out.txt")
 	if err != nil {
-		log.Fatal("Failed to create out file")
+		log.Fatalf("Failed to create out file, %v", err.Error())
 	}
 	defer file.Close()
 
