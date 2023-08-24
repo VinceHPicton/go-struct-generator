@@ -61,7 +61,6 @@ func main() {
 func printHelp() {
 	fmt.Println("Go-struct-generator is a tool which generates go structs from json files.")
 	fmt.Println()
-	fmt.Println("test")
 	fmt.Println("Usage: go-struct-generator [options]")
 	fmt.Println("Options:")
 	flag.PrintDefaults()
