@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"go-struct-generator/buildstructs"
 	"io/ioutil"
 	"log"
 	"os"
+
+	"github.com/VinceHPicton/go-struct-generator/buildstructs"
 )
 
 func main() {

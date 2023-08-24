@@ -23,7 +23,7 @@ func generateStructsRecursion(fields []StructField, structDefinitions *[]string)
 			newStructDefinition := createStructDefinition(f)
 			*structDefinitions = append(*structDefinitions, newStructDefinition)
 
-			// pass it's subfields to this func - this func will kick off creating definitions for any further substructs
+			// pass its subfields to this func - this func will kick off creating definitions for any further substructs
 			generateStructsRecursion(f.SubFields, structDefinitions)
 		}
 	}
