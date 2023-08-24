@@ -32,7 +32,6 @@ func main() {
 		log.Fatalf(err.Error())
 	}
 
-	// lesson: range makes a copy of values if you use i, v -> v is a copy not a reference
 	for i := range fieldSlice {
 		fieldSlice[i].DataType = "struct"
 	}
