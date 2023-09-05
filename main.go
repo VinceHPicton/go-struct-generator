@@ -93,12 +93,12 @@ func printGoStructs(fieldSlice []string) {
 func readFile(fileName string) []byte {
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
-		log.Fatalf("Failed to open JSON file: %v", fileName)
+		log.Fatalf("Failed to open JSON file: %v, err: %v", fileName, err)
 	}
 
 	jsonBytes, err := ioutil.ReadAll(jsonFile)
 	if err != nil {
-		log.Fatalf("Failed to read JSON file: %v", fileName)
+		log.Fatalf("Failed to read JSON file: %v, err: %v", fileName, err)
 	}
 	defer jsonFile.Close()
 
