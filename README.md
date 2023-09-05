@@ -20,7 +20,7 @@ This will generate a file named out.txt which will contain the generated Go stru
 docker pull theundula/go-struct-generator
 ```
 
-### Run the container
+### How to use as a docker image
 ```bash
 docker run -v "$(pwd):/appspace/userpwd" theundula/go-struct-generator path/to/your/structs.json
 ```
