@@ -25,7 +25,7 @@ docker pull theundula/go-struct-generator
 docker run -v "$(pwd):/appspace/userpwd" theundula/go-struct-generator path/to/your/structs.json
 ```
 
-### How to structure your json file
+## How to structure your json file
 - See the example_structs.json for an example input file, you can run the program with this example to see what it outputs.
 - The file is an array of objects, each of these objects represent a struct you desire to create. 
 - Each object must have "name" and "type" attributes, and can optionally have "tag" if you want a struct tag for that go struct field, and/or "fields", needed where the type of the go struct field is either a struct itself, or an array of structs.
