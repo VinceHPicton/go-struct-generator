@@ -1,94 +1,94 @@
 [
-    {
-      "name": "MyHttpRequest",
-      "fields": [
-        {
-          "name": "ID",
-          "type": "int",
-          "tag": "`json:\"id,omitempty\"`"
-        },
-        {
-          "name": "Country",
-          "type": "string",
-          "tag": "`json:\"type\"`"
-        },
-        {
-          "name": "Amount",
-          "type": "float64",
-          "tag": "`json:\"amount\"`"
-        },
-        {
-          "name": "Data",
-          "type": "struct",
-          "tag": "`json:\"data\"`",
-          "fields" : [
-            {
-              "name": "Username",
-              "type": "string",
-              "tag": "`json:\"username\"`"
-            },
-            {
-              "name": "HashedPassword",
-              "type": "string",
-              "tag": "`json:\"hashedPassword\"`"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "MyHttpResponse",
-      "fields": [
-        {
-          "name": "Success",
-          "type": "bool",
-          "tag": "`json:\"success\"`"
-        },
-        {
-          "name": "FailReason",
-          "type": "string",
-          "tag": "`json:\"failReason\"`"
-        },
-        {
-          "name": "PreviousLogins",
-          "type": "[]struct",
-          "tag": "`json:\"previousLogins\"`",
-          "fields": [
-            {
-              "name": "Metadata",
-              "type": "struct",
-              "tag": "`json:\"metadata\"`",
-              "fields": [
-                {
-                  "name": "Meta1",
-                  "type": "int",
-                  "tag": "`json:\"meta1\"`"
-                },
-                {
-                  "name": "Meta2",
-                  "type": "int64",
-                  "tag": "`json:\"meta2\"`"
-                },
-                {
-                  "name": "Meta3",
-                  "type": "*int",
-                  "tag": "`json:\"meta3\"`"
-                }
-              ]
-            },
-            {
-              "name": "Time",
-              "type": "time.Time",
-              "tag": "`json:\"time\"`"
-            },
-            {
-              "name": "Success",
-              "type": "bool",
-              "tag": "`json:\"success\"`"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  {
+    "name": "MyHttpRequest",
+    "fields": [
+      {
+        "name": "ID",
+        "type": "int",
+        "tag": "`json:\"id,omitempty\"`"
+      },
+      {
+        "name": "Country",
+        "type": "string",
+        "tag": "`json:\"type\"`"
+      },
+      {
+        "name": "Amount",
+        "type": "float64",
+        "tag": "`json:\"amount\"`"
+      },
+      {
+        "name": "Data",
+        "type": "struct",
+        "tag": "`json:\"data\"`",
+        "fields" : [
+          {
+            "name": "Username",
+            "type": "string",
+            "tag": "`json:\"username\"`"
+          },
+          {
+            "name": "HashedPassword",
+            "type": "string",
+            "tag": "`json:\"hashedPassword\"`"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MyHttpResponse",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "bool",
+        "tag": "`json:\"success\"`"
+      },
+      {
+        "name": "FailReason",
+        "type": "string",
+        "tag": "`json:\"failReason\"`"
+      },
+      {
+        "name": "PreviousLogins",
+        "type": "[]struct",
+        "tag": "`json:\"previousLogins\"`",
+        "fields": [
+          {
+            "name": "Metadata",
+            "type": "struct",
+            "tag": "`json:\"metadata\"`",
+            "fields": [
+              {
+                "name": "Meta1",
+                "type": "int",
+                "tag": "`json:\"meta1\"`"
+              },
+              {
+                "name": "Meta2",
+                "type": "int64",
+                "tag": "`json:\"meta2\"`"
+              },
+              {
+                "name": "Meta3",
+                "type": "*int",
+                "tag": "`json:\"meta3\"`"
+              }
+            ]
+          },
+          {
+            "name": "Time",
+            "type": "time.Time",
+            "tag": "`json:\"time\"`"
+          },
+          {
+            "name": "Success",
+            "type": "bool",
+            "tag": "`json:\"success\"`"
+          }
+        ]
+      }
+    ]
+  }
+]
   
