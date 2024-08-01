@@ -1,21 +1,7 @@
 # go-struct-generator
 Reads a JSON file and generates go struct definitions for you recursively - structs can be nested inside structs as deeply as needed
 
-## Installing as a Go module
-```bash
-go install go-struct-generator
-```
-
-### How to use as a Go module
-After installing, create a json file for the program to use and simply run:
-
-```bash
-go-struct-generator -file relative/path/to/your/json/file.json
-```
-
-This will generate a file named out.txt which will contain the generated Go structs for you to paste into your app.
-
-## Or pull the docker image
+## Pull the docker image
 ```bash
 docker pull theundula/go-struct-generator
 ```
