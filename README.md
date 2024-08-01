@@ -3,7 +3,7 @@ Reads a JSON file and generates go struct definitions for you recursively - stru
 
 ## Installing as a Go module
 ```bash
-go install github.com/VinceHPicton/go-struct-generator
+go install go-struct-generator
 ```
 
 ### How to use as a Go module
