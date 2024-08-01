@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"go-struct-generator/buildstructs"
+	"github.com/VinceHPicton/go-struct-generator/buildstructs"
 )
 
 func main() {
