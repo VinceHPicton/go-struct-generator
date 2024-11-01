@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func CreateStructsForFieldSlice(fields []StructField) []string {
+func CreateStructStringsForFieldSlice(fields []StructField) []string {
 	var structDefs []string
 
 	generateStructsRecursion(fields, &structDefs)

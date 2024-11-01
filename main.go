@@ -1,15 +1,13 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 
 	"github.com/VinceHPicton/go-struct-generator/buildstructs"
+	"github.com/VinceHPicton/go-struct-generator/file_parser"
 )
 
 func main() {
@@ -26,35 +24,19 @@ func main() {
 		return
 	}
 
-	jsonBytes := readFile(file)
-
-	var fieldSlice []buildstructs.StructField
-
-	decoder := json.NewDecoder(bytes.NewReader(jsonBytes))
-
-	decoder.DisallowUnknownFields()
-
-	err := decoder.Decode(&fieldSlice)
+	structFields, err := file_parser.ParseFileToStructFields(file)
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
 
-	for i := range fieldSlice {
-		fieldSlice[i].DataType = "struct"
+	structStrings := buildstructs.CreateStructStringsForFieldSlice(structFields)
+
+	printStrings(structStrings)
+
+	err = writeStringsToOutFile(structStrings)
+	if err != nil {
+		log.Fatalf(err.Error())
 	}
-
-	fmt.Println(fieldSlice)
-
-	// err := json.Unmarshal(jsonBytes, &fieldSlice)
-	// if err != nil {
-	// 	log.Fatalf("Failed to unmarshal JSON")
-	// }
-
-	structDefinitions := buildstructs.CreateStructsForFieldSlice(fieldSlice)
-
-	printGoStructs(structDefinitions)
-
-	writeGoStructsToOutFile(structDefinitions)
 
 }
 
@@ -67,7 +49,7 @@ func printHelp() {
 	os.Exit(0)
 }
 
-func writeGoStructsToOutFile(structDefinitions []string) {
+func writeStringsToOutFile(structDefinitions []string) error {
 	file, err := os.Create("out.txt")
 	if err != nil {
 		log.Fatalf("Failed to create out file, %v", err.Error())
@@ -78,29 +60,15 @@ func writeGoStructsToOutFile(structDefinitions []string) {
 
 		_, err := file.WriteString(s)
 		if err != nil {
-			log.Fatalf("Failed to write line: %v", s)
+			return err
 		}
 	}
+	return nil
 }
 
-func printGoStructs(fieldSlice []string) {
+func printStrings(fieldSlice []string) {
 
 	for _, s := range fieldSlice {
 		fmt.Print(s)
 	}
-}
-
-func readFile(fileName string) []byte {
-	jsonFile, err := os.Open(fileName)
-	if err != nil {
-		log.Fatalf("Failed to open JSON file: %v, err: %v", fileName, err)
-	}
-
-	jsonBytes, err := ioutil.ReadAll(jsonFile)
-	if err != nil {
-		log.Fatalf("Failed to read JSON file: %v, err: %v", fileName, err)
-	}
-	defer jsonFile.Close()
-
-	return jsonBytes
 }

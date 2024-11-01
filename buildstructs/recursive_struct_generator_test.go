@@ -124,7 +124,7 @@ func Test_CreateStructsForFieldSlice(t *testing.T) {
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
 
-			got := CreateStructsForFieldSlice(test.input)
+			got := CreateStructStringsForFieldSlice(test.input)
 
 			var compareStr string
 			for _, str := range got {
